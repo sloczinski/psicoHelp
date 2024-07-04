@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+  background-color: #d3e8ff;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fcd3e1;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 10%;
+}
+
+h1 {
+  color: #91c3eb;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #91c3eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #7aabdb;
+}
+
+p {
+  margin-top: 20px;
+}
+
+a {
+  color: #91c3eb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#imagemLogo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 140px;
+  height: auto;
+  margin: 10px;
+}
