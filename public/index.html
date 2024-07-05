@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tela de registro</title>
+    <title>PiscoHelp!</title>
     <link rel="stylesheet" href="../public/css/style.css" />
   </head>
   <body>
     <div class="container">
       <h1>Olá, que bom ter você aqui!</h1>
-      <form id="registerForm">
+      <form id="loginForm">
         <input
           type="email"
           id="email"
@@ -24,11 +24,15 @@
           placeholder="Senha"
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit">
+          <a href="./pages/menu/menuPrincipal.html" style="color: #fff"
+            >Login</a
+          >
+        </button>
       </form>
       <p>
-        <b>Já possui uma conta?</b>
-        <a href="main-menu.html"><b>Entre aqui</b></a>
+        <b>Não possui uma conta?</b>
+        <a href="./pages/cadastro/telaCadastro1.html"><b>Registrar-se</b></a>
       </p>
     </div>
     <div>
@@ -38,6 +42,6 @@
         alt="logoMarca"
       />
     </div>
-    <script src=""></script>
+    <script src="/public/js/script.js"></script>
   </body>
 </html>

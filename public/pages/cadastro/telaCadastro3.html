@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar-3</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Quase lá!</h1>
+      </div>
+      <form id = thirdRegistration class="register-form">
+        <input id = "cpf" type="text" placeholder="CPF" required>
+            <div class="phone-input">
+                <input id="ddd" type="text" placeholder="DDD" required>
+                <input id="fone" type="text" placeholder="FONE" required>
+            </div>
+            <input type="date" placeholder="Data de nascimento" required>
+            <div class="radio-group">
+              <p>Nota fiscal será em nome de terceiro? </p>
+                <label>
+                    <input type="radio" name="nf_terceiros" value="sim" required> Sim
+                </label>
+                <label>
+                    <input type="radio" name="nf_terceiros" value="nao" > Não
+                </label>
+            </div>
+            <button type="submit" onclick="getRadioValue()">Avançar</button>
+      </form>
+      <div class="footer">
+        <p>
+          <p><b>Já possui uma conta? </b><a href="../../index.html"><b>Voltar ao Login</b></a></p>
+          
+        </p>
+      </div>
+    </div>
+    <div>
+      <img
+        src="../../images/logoMarca PsicoHelp!.png"
+        id="imagemLogo"
+        alt="logoMarca"
+      />
+    <script src="../../js/script.js"></script>
+  </body>
+</html>
