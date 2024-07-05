@@ -1,0 +1,78 @@
+//docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=psicohelp -e MYSQL_USER=root -e MYSQL_PASSWORD=root -p 3306:3306 -d mysql:latest
+
+CREATE DATABASE psicohelp;
+
+USE psicohelp;
+
+CREATE TABLE usuarios (
+    cpf VARCHAR(11) PRIMARY KEY,
+    nome_completo VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    rua VARCHAR(100) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    complemento VARCHAR(100),
+    ddd VARCHAR(2) NOT NULL,
+    fone VARCHAR(9) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    nota_fiscal_terceiro VARCHAR(3) NOT NULL,
+    nome_responsavel VARCHAR(100),
+    cpf_responsavel VARCHAR(11),
+    papel VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE profissionais (
+    cpf VARCHAR(11) PRIMARY KEY,
+    crp VARCHAR(6) UNIQUE NOT NULL,
+    nome_completo VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    rua VARCHAR(100) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    complemento VARCHAR(100),
+    ddd VARCHAR(2) NOT NULL,
+    fone VARCHAR(15) NOT NULL,
+    papel VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE credenciais (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    cpf_usuario VARCHAR(11) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha_hash VARCHAR(255) NOT NULL,
+    FOREIGN KEY (cpf_usuario) REFERENCES usuarios(cpf)
+);
+
+CREATE TABLE sessoes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ultimo_login TIMESTAMP,
+    status VARCHAR(20) DEFAULT 'ativo',
+    FOREIGN KEY (email) REFERENCES usuarios(credenciais)
+);
+CREATE TABLE consultas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    cliente_cpf VARCHAR(11) NOT NULL,
+    profissional_cpf VARCHAR(11) NOT NULL,
+    data_consulta TIMESTAMP NOT NULL,
+    status TIMESTAMP,
+    valor DECIMAL(10,2) NOT NULL,
+    data_pagar DATE,
+    status_pagamento VARCHAR(10),
+    FOREIGN KEY (cliente_cpf) REFERENCES usuarios(cpf),
+    FOREIGN KEY (profissional_cpf) REFERENCES profissionais(cpf)
+);
+CREATE TABLE prontuario (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    cliente_cpf VARCHAR(11) NOT NULL,
+    profissional_cpf VARCHAR(11) NOT NULL,
+    data_prontuario TIMESTAMP NOT NULL,
+    resumo VARCHAR(2000) NOT NULL,
+    FOREIGN KEY (cliente_cpf) REFERENCES usuarios(cpf),
+    FOREIGN KEY (profissional_cpf) REFERENCES profissionais(cpf)
+);
