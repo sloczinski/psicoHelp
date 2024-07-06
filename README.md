@@ -1,22 +1,17 @@
 # PsicoHelp!
 
-Projeto criado destinado para auxiliar os psicólogos
+Projeto criado destinado para auxiliar os psicólogos nas tarefas administrativas enfrentadas durante o exercício da profissão.
 
 ## Instalação
 
-Instruções passo a passo de como configurar o ambiente de desenvolvimento.
-
 ```bash
-# Clone este repositório
-git clone https://github.com/seu-usuario/seu-projeto.git
+# Clocar o repositório
+git clone https://github.com/sloczinski/psicoHelp.git
 
-# Navegue até o diretório do projeto
-cd seu-projeto
-
-# Instale as dependências
+# Instalar dependenciais
 npm install
 
-Banco de dados:
+# Ajustar o Banco de dados
 O projeto foi configurado utilizando um container docker.
 Necessário executar no terminal o comando:
 docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=psicohelp -e MYSQL_USER=root -e MYSQL_PASSWORD=root -p 3306:3306 -d mysql:latest

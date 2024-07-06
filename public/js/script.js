@@ -47,8 +47,6 @@ function avancarFormularios(event) {
     case "fourthRegistration":
       window.location.href = "../menu/menuPrincipal.html";
       break;
-    default:
-      console.error("Formulário desconhecido:", formId);
   }
 }
 
@@ -56,3 +54,52 @@ function avancarFormularios(event) {
 document.querySelectorAll("form").forEach((form) => {
   form.addEventListener("submit", avancarFormularios);
 });
+
+//Login
+document
+  .getElementById("loginForm")
+  .addEventListener("submit", handleFormSubmit);
+
+function handleFormSubmit(event) {
+  event.preventDefault(); // Impede o envio padrão do formulário
+
+  const loginData = captureFormData();
+
+  sendLoginRequest(loginData).then(handleLoginResponse).catch(handleLoginError);
+}
+
+function captureFormData() {
+  // Captura os valores dos campos de email e senha apenas do formulário com ID 'login'
+  const form = document.getElementById("loginForm");
+  const email = form.querySelector("#email").value;
+  const password = form.querySelector("#password").value;
+
+  // Cria um objeto JSON com os valores
+  return {
+    email: email,
+    password: password,
+  };
+}
+
+function sendLoginRequest(loginData) {
+  return fetch("/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginData),
+  }).then((response) => response.json());
+}
+
+function handleLoginResponse(data) {
+  if (data.error) {
+    console.error(data.error);
+  } else {
+    // Lógica para lidar com sucesso de login
+    console.log("Login bem-sucedido", data.result);
+    window.location.href = "./pages/menu/menuPrincipal.html";
+  }
+}
+function handleLoginError(error) {
+  console.error("Erro:", error);
+}

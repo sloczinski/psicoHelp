@@ -76,3 +76,7 @@ CREATE TABLE prontuario (
     FOREIGN KEY (cliente_cpf) REFERENCES usuarios(cpf),
     FOREIGN KEY (profissional_cpf) REFERENCES profissionais(cpf)
 );
+
+//Inserir usuário de teste
+INSERT INTO `usuarios`(`cpf`,`nome_completo`,`cidade`,`cep`,`estado`,`rua`,`numero`,`complemento`,`ddd`,`fone`,`data_nascimento`,`nota_fiscal_terceiro`,`papel`,`email`) VALUES('00100200312','Bruno Teste','Porto Alegre','90040373','RS','Santana','321','12','51','999991111','2011-08-18','nao','user','teste@hotmail.com');
+INSERT INTO `credenciais`(`cpf_usuario`,`email`,`senha_hash`) VALUES('00100200312','teste@hotmail.com','123123');

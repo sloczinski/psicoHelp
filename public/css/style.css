@@ -79,7 +79,7 @@ a:hover {
 .align-specific {
   display: block;
   margin: 0 auto;
-  width: 95%; /* Exemplo de ajuste de largura */
-  padding: 10px; /* Exemplo de ajuste de padding */
-  /* Outros estilos específicos */
+  width: 95%; 
+  padding: 10px; 
+ 
 }
